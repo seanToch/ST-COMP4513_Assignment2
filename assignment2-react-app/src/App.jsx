@@ -16,10 +16,12 @@ const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env
 //App Function
 function App() {
 
+  //Data loading state for dataset, loading and error handling
   const [siteData, setSiteData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  //Querying the database
   useEffect(() => {
       async function loadData() {
     try {
@@ -35,16 +37,21 @@ function App() {
   loadData();
   }, []);
 
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   return (
     <>
-    <Header />
+    <Header/>
     <main>
-      <Routes>
-        <Route path="/" element={<Home data={siteData}/>} />
-        <Route path="/browse" element={<Browse />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
+      {loading && <p>Loading...</p>} 
+      {error && <p>Error: {error}</p>}
+      {!loading && !error && (
+        <Routes>
+          <Route path="/" element={<Home data={siteData}/>} />
+          <Route path="/browse" element={<Browse data={siteData} />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      )}
     </main>
     <Footer />
     </>
@@ -53,3 +60,5 @@ function App() {
 }
 
 export default App;
+
+

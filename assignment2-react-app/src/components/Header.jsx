@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 const Header = (props) => {
     return(
         <section className="header">
-            <h1>TITLE</h1>
+            <h1>LOGO</h1>
             <nav>
                 <ul>
                     <li>
