@@ -4,8 +4,8 @@ const Browse = (props) => {
         <div>
             <h1>BROWSE</h1>
             <ul>
-                {props.data.map((p) => (
-                    <li key={p.paintingId}>{p.title}</li>
+                {props.data.map((e) => (
+                    <li key={e.paintingId}>{e.title}</li>
                 ))}
             </ul>
         </div>

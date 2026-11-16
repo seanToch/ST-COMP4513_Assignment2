@@ -8,7 +8,9 @@ import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import Home from './views/Home.jsx'
 import Browse from './views/Browse.jsx'
-import About from './views/About.jsx'
+import ShoppingCart from './views/ShoppingCart.jsx'
+import AboutDialog from './views/AboutDialog.jsx';
+
 
 //Create supabase client to fetch data
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
@@ -37,23 +39,25 @@ function App() {
   loadData();
   }, []);
 
+  //Create state for dialog box
   const [aboutOpen, setAboutOpen] = useState(false);
 
   return (
     <>
-    <Header/>
-    <main>
-      {loading && <p>Loading...</p>} 
-      {error && <p>Error: {error}</p>}
-      {!loading && !error && (
-        <Routes>
-          <Route path="/" element={<Home data={siteData}/>} />
-          <Route path="/browse" element={<Browse data={siteData} />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      )}
-    </main>
-    <Footer />
+    <Header openAbout={() => setAboutOpen(true)} />
+      <main>
+        {loading && <p>Loading...</p>}
+        {error && <p>Error: {error}</p>}
+        {!loading && !error && (
+          <Routes>
+            <Route path="/" element={<Home data={siteData} />} />
+            <Route path="/browse" element={<Browse data={siteData} />} />
+            <Route path="/cart" element={<ShoppingCart data={siteData} />} />
+          </Routes>
+        )}
+      </main>
+      <Footer />
+      <AboutDialog open={aboutOpen} onClose={() => setAboutOpen(false)} />
     </>
     
   )

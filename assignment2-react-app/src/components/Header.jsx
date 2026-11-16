@@ -1,9 +1,10 @@
 import {Link} from 'react-router-dom'
+import logo from '../assets/Historical Paintings Gallery Logo.png'
 
 const Header = (props) => {
-    return(
+     return(
         <section className="header">
-            <h1>LOGO</h1>
+            <img src={logo} alt="Logo"/>
             <nav>
                 <ul>
                     <li>
@@ -13,9 +14,12 @@ const Header = (props) => {
                         <Link to="/browse"><button>Browse</button></Link>
                     </li>
                     <li>
-                        <Link to="/about"><button>About</button></Link>
+                        <button onClick={props.openAbout}>About</button>
                     </li>
                 </ul>
+
+                <Link to="/cart"><button>Cart</button></Link>
+
             </nav>
         </section>
     )
