@@ -1,23 +1,28 @@
 import { useEffect, useRef } from 'react';
 
-//Content and control of the ABOUT dialog box
-const AboutDialog = ({ open, onClose }) => {
+// Dialog Box Function
+const AboutDialog = (props) => {
   const dialogRef = useRef(null);
 
-  // Sync the open prop with the native <dialog> element
+  // If Open state is true, show modal else hide the box
   useEffect(() => {
-  if (open) {
-    dialogRef.current.showModal();
-  } else {
-    dialogRef.current.close();
-  }
-}, [open]);
+    if (props.open) {
+      dialogRef.current.showModal();
+    } else {
+      dialogRef.current.close();
+    }
+  }, [props.open]);
 
-  //Return Content and Close button
+  // Return Dialog Markup 
   return (
-    <dialog ref={dialogRef} onClose={onClose} onClick={(e) => { if (e.target === dialogRef.current) onClose(); }}>
+    <dialog ref={dialogRef} onClose={props.onClose}>
+      <button onClick={props.onClose} aria-label="Close">&times;</button>
+
       <h1>About</h1>
-      <button onClick={onClose}>Close</button>
+     
+      <p>ABOUT INFO</p>
+
+      <button onClick={props.onClose}>Close</button>
     </dialog>
   );
 };

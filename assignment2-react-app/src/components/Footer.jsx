@@ -1,12 +1,12 @@
-import {Link} from 'react-router-dom'
-
-const Footer = (props) => {
-    return(
-        <section className="footer">
-            <h2>GITHUB LINK: </h2>
-            <Link to="/"><button>Return Home</button></Link>
-        </section>
-    )
-}
+const Footer = () => {
+  return (
+    <footer className="footer">
+      <p>
+        <a href="https://github.com/seanToch/ST-COMP4513_Assignment2.git">Development Git Repository</a>
+      </p>
+      <p>COMP 4513 Assignment 2 | Sean Tocheniuk</p>
+    </footer>
+  );
+};
 
 export default Footer;
