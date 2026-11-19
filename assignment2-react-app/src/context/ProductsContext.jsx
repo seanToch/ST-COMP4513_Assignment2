@@ -4,7 +4,7 @@ import {useState, useContext, createContext, useEffect} from 'react'
 export const ProductsContext = createContext(null);
 
 // Products API Link
-const URL = 'https://dummyjson.com/products?limit=100'
+const URL = 'https://dummyjson.com/products?limit=10'
 
 // Provider Function
 export const ProductsProvider = (props) => {
@@ -19,7 +19,7 @@ export const ProductsProvider = (props) => {
         fetch(URL)
         .then(resp => (resp.json()))
         .then(data => {
-            setProducts(data);
+            setProducts(data.products);
             setLoading(false);
         })
         .catch(err => {
@@ -30,7 +30,7 @@ export const ProductsProvider = (props) => {
 
     // Return Provider
     return (
-        <ProductsContext.Provider value={[products, loading, error]} >
+        <ProductsContext.Provider value={{products, loading, error}} >
             {props.children}
         </ProductsContext.Provider>
     );

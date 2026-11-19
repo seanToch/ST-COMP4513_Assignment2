@@ -1,8 +1,9 @@
+import { Link, NavLink } from 'react-router-dom';
 
 const Browse = (props) => {
     return(
         <div>
-            <h1>BROWSING</h1>
+            <NavLink to="/product/1">BROWSING</NavLink>
         </div>
 )}
 
