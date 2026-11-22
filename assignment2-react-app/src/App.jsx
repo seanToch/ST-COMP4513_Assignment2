@@ -13,6 +13,7 @@ import Browse from './views/Browse.jsx';
 import SingleProduct from './views/SingleProduct.jsx';
 import ShoppingCart from './views/ShoppingCart.jsx';
 import AboutDialog from './views/AboutDialog.jsx';
+import loadingGif from './assets/loading.gif';
 
 
 
@@ -27,7 +28,10 @@ function App() {
   let content;
 
   if (loading) {
-    content = <p>Loading...</p>;
+    content = (
+      <div className="loading">
+        <img src={loadingGif} alt="Loading products" />
+      </div>)
   } else if (error) {
     content = <p>Oops... {error}</p>;
   } else {

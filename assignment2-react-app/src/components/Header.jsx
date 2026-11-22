@@ -1,13 +1,13 @@
 import { Link, NavLink } from 'react-router-dom';
+
+import { useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 import logo from '../assets/logo.png';
 
 const Header = (props) => {
 
-
-  // Placeholder until CartContext exists
-  const cartCount = 0;
-
-
+  // Get Cart Item Count
+  const { cartCount } = useContext(CartContext);
 
   // Return links and header markup
   return (

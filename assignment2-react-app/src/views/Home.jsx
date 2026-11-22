@@ -2,10 +2,13 @@ import {Link} from 'react-router-dom'
 import { useContext } from 'react';
 import { ProductsContext } from '../context/ProductsContext';
 
+
 const Home = (props) => {
 
     const { products } = useContext(ProductsContext);
     console.log(products);
+
+
 
     return(
         <div>
