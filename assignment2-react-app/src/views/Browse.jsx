@@ -1,20 +1,20 @@
-import { Link, NavLink } from 'react-router-dom';
+// Import Tools
 import { useContext } from 'react';
-
 import { ProductsContext } from '../context/ProductsContext';
-import { CartContext } from '../context/CartContext.jsx';
 
-const Browse = (props) => {
+// Import Components
+import ProductGrid from '../components/ProductGrid';
 
-    //Get Products and Cart Contexts
+//PLACEHOLDER
+const Browse = () => {
     const { products } = useContext(ProductsContext);
-    const { cart, addToCart } = useContext(CartContext);
 
-    return(
+    return (
         <div>
-            <NavLink to="/product/1">BROWSING</NavLink>
-            <button onClick={() => addToCart(products[0])}>Test add</button>
+            <h1>Browse</h1>
+            <ProductGrid products={products} />
         </div>
-)}
+    );
+};
 
 export default Browse;

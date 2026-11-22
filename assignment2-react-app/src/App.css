@@ -191,3 +191,23 @@ dialog {
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.6);
 }
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.product-card img {
+    width: 100%;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.loading img {
+  width: 80px;
+}
