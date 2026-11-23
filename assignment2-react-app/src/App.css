@@ -264,11 +264,6 @@ dialog::backdrop {
     color: #f5a623;
 }
 
-.tab-btn.current {
-    font-weight: bold;
-    border-bottom: 3px solid #2563eb;
-}
-
 .reviews {
     max-height: 300px;
     overflow-y: auto;
@@ -279,4 +274,33 @@ dialog::backdrop {
 .reviews li {
     border-bottom: 1px solid #ddd;
     padding: 0.75rem 0;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-table td img {
+    vertical-align: middle;
+    margin-right: 0.75rem;
+}
+
+.cart-bottom {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.shipping-options label {
+    display: block;
+    margin: 0.5rem 0;
 }
