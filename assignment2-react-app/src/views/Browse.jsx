@@ -152,7 +152,7 @@ const Browse = () => {
         // Returns Filters, Sort Dropdown, Results Count And Product Grid
     return (
         <div className="browse">
-            <h1>Browse</h1>
+            <h1  className="text-3xl font-bold text-brand">Browse</h1>
 
             <div className="browse-layout">
                 <FilterPanel

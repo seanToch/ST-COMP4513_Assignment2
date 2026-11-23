@@ -1,13 +1,13 @@
 import ProductItem from './ProductItem';
 
 //Creates a Grid of Product Item Results Based On the Filters. Msg If No Results
-const ProductGrid = ({ products }) => {
+const ProductGrid = (props) => {
     let content;
 
-    if (products.length === 0) {
+    if (props.products.length === 0) {
         content = <p>No products match your filters.</p>;
     } else {
-        content = products.map(product => (
+        content = props.products.map(product => (
             <ProductItem key={product.id} product={product} />
         ));
     }
