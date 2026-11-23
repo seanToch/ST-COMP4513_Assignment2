@@ -229,3 +229,54 @@ dialog::backdrop {
     opacity: 0.4;
     cursor: not-allowed;
 }
+
+.product-top {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 400px;
+    cursor: zoom-in;
+}
+
+.product-details {
+    flex: 1;
+    min-width: 280px;
+}
+
+.tags {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+}
+
+.tag {
+    border: 1px solid #999;
+    border-radius: 999px;
+    padding: 0.1rem 0.75rem;
+}
+
+.stars {
+    color: #f5a623;
+}
+
+.tab-btn.current {
+    font-weight: bold;
+    border-bottom: 3px solid #2563eb;
+}
+
+.reviews {
+    max-height: 300px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+}
+
+.reviews li {
+    border-bottom: 1px solid #ddd;
+    padding: 0.75rem 0;
+}

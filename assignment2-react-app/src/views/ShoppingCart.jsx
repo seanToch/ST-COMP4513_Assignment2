@@ -5,6 +5,8 @@ import { CartContext } from '../context/CartContext';
 const ShoppingCart = () => {
     const { cart } = useContext(CartContext);
 
+    console.log(cart);
+    
     let content;
 
     if (cart.length === 0) {
