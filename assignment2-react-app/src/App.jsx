@@ -29,11 +29,11 @@ function App() {
 
   if (loading) {
     content = (
-      <div className="loading">
-        <img src={loadingGif} alt="Loading products" />
+      <div className="flex justify-center py-16">
++        <img src={loadingGif} alt="Loading products" className="w-20" />
       </div>)
   } else if (error) {
-    content = <p>Oops... {error}</p>;
+    content = <p className="py-16 text-center text-danger">Oops... {error}</p>;
   } else {
     content = (
       <Routes>
@@ -46,12 +46,12 @@ function App() {
   }
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Header openAbout={() => setAboutOpen(true)} />
-      <main>{content}</main>
+      <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-8">{content}</main>
       <Footer />
       <AboutDialog open={aboutOpen} onClose={() => setAboutOpen(false)} />
-    </>
+    </div>
   );
 }
 
