@@ -1,5 +1,5 @@
 
-// Returns a DropDown Selector To Change Sorting Option
+// DropDown Selector To Change Sorting Option
 const SortSelector = (props) => {
     return (
         <label>

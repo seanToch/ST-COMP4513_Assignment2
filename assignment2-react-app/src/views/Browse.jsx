@@ -21,9 +21,9 @@ const emptyFilters = {
     priceOver: ''
 };
 
-
+// Browse Function
 const Browse = () => {
-    //Product Context
+    // Product Context
     const { products } = useContext(ProductsContext);
 
     // Page State
@@ -36,14 +36,51 @@ const Browse = () => {
     const [filters, setFilters] = useState(emptyFilters);
 
 
-    // Filter Products
+    // Set of Categories To Be Used For Filtering
+    const categorySet = new Set();
+
+    // Search Through Data And Add Categories
+    products.forEach(product => categorySet.add(product.category));
+
+    // Sort Category Set
+    const categories = [...categorySet].sort();
+
+
+    // Filter Product List
     const filteredProducts = products.filter(product => {
-        if (filters.priceUnder !== '' && product.price >= Number(filters.priceUnder)) {
+
+        // Check Which Filters Are Active
+        const nameIsUsed = filters.name !== '';
+        const categoryIsUsed = filters.categories.length > 0;
+        const ratingIsUsed = filters.ratings.length > 0;
+        const underIsUsed = filters.priceUnder !== '';
+        const overIsUsed = filters.priceOver !== '';
+
+        // Check If Product Matches Filters
+        const nameMatches = product.title.toLowerCase().includes(filters.name.toLowerCase());
+        const categoryMatches = filters.categories.includes(product.category);
+        const ratingMatches = filters.ratings.includes(Math.floor(product.rating));
+        const underMatches = product.price < Number(filters.priceUnder);
+        const overMatches = product.price > Number(filters.priceOver);
+
+        // Check If Both True
+        if (nameIsUsed && !nameMatches) {
             return false;
         }
-        if (filters.priceOver !== '' && product.price <= Number(filters.priceOver)) {
+        if (categoryIsUsed && !categoryMatches) {
             return false;
         }
+        if (ratingIsUsed && !ratingMatches) {
+            return false;
+        }
+        if (underIsUsed && !underMatches) {
+            return false;
+        }
+        if (overIsUsed && !overMatches) {
+            return false;
+        }
+
+        // Passed every filter that is on
         return true;
     });
 
@@ -58,6 +95,8 @@ const Browse = () => {
         sortedProducts.sort((a, b) => a.title.localeCompare(b.title));
     } else if (sortBy === 'price') {
         sortedProducts.sort((a, b) => a.price - b.price);
+    } else if (sortBy === 'category') {
+        sortedProducts.sort((a, b) => a.category.localeCompare(b.category));
     }
 
 
@@ -86,6 +125,22 @@ const Browse = () => {
     };
 
 
+    // Add Or Remove One Filter And Returns To Page 1
+    const toggleFilterItem = (filterName, item) => {
+        const currentList = filters[filterName];
+        let newList;
+
+        if (currentList.includes(item)) {
+            newList = currentList.filter(existing => existing !== item);
+        } else {
+            newList = [...currentList, item];
+        }
+
+        setFilters({ ...filters, [filterName]: newList });
+        setCurrentPage(1);
+    };
+
+
     // Reset Every Filter. The Sort Order Is Left Alone
     const handleClearAll = () => {
         setFilters(emptyFilters);
@@ -102,7 +157,9 @@ const Browse = () => {
             <div className="browse-layout">
                 <FilterPanel
                     currentFilters={filters}
+                    categories={categories}
                     updateFilters={updateFilters}
+                    toggleFilterItem={toggleFilterItem}
                 />
 
                 <div className="browse-results">

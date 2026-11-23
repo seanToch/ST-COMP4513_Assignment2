@@ -1,5 +1,5 @@
 
-//
+// Input Fields FOr Price Filter
 const PriceFilter = (props) => {
 
     return (
