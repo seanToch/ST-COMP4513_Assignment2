@@ -4,7 +4,7 @@ import {useState, createContext, useEffect} from 'react'
 export const ProductsContext = createContext(null);
 
 // Products API Link
-const URL = 'https://dummyjson.com/products?limit=10'
+const URL = 'https://dummyjson.com/products?limit=100'
 
 // Provider Function
 export const ProductsProvider = (props) => {
@@ -17,7 +17,9 @@ export const ProductsProvider = (props) => {
     // Fetch Data. Initially loading, products or error get set depending on result
     useEffect(() => {
         fetch(URL)
-        .then(resp => (resp.json()))
+        .then(resp => (
+            resp.json()
+        ))
         .then(data => {
             setProducts(data.products);
             setLoading(false);
@@ -35,10 +37,3 @@ export const ProductsProvider = (props) => {
         </ProductsContext.Provider>
     );
 }
-
-
-//COMPONENT USAGE
-//import { useContext } from "react";
-//import { ProductsContext } from "../context/ProductsContext";
-
-// const { products, loading, error } = useContext(ProductsContext)

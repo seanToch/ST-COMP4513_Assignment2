@@ -211,3 +211,21 @@ dialog::backdrop {
 .loading img {
   width: 80px;
 }
+
+.browsepages {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+.page-btn.current {
+    background: #2563eb;
+    color: white;
+    font-weight: bold;
+}
+
+.browsepages button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
