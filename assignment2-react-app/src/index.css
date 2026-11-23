@@ -1,27 +1,36 @@
+/* Used Generative AI to Create A Base Index.css file To Test If Tailwind Was Working*/
+
+
 @import "tailwindcss";
 
-/* Brand colors and font. These become classes like bg-brand, text-brand-dark */
+/* Site Theme Colors and Font */
 @theme {
-  --color-brand: #2f5d62;
-  --color-brand-dark: #1f3f43;
-  --color-brand-light: #dfeeea;
-  --color-accent: #e07a3f;
+  --color-brand: #1F4D3A;
+  --color-brand-dark: #143527;
+  --color-brand-light: #E3EFE9;
+  --color-accent: #E8742A;
+  --color-accent-dark: #C45A14;
+  --color-snow: #F7F9F8;
+  --color-line: #D5DDD9;
+  --color-granite: #1E2A26;
+  --color-stone: #5F6F68;
+  --color-star: #F2B134;
+  --color-danger: #C0392B;
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
-/* Base styles: things Tailwind's reset removes that we want back */
+/* Base styles */
 @layer base {
   body {
-    @apply bg-gray-50 text-gray-900 font-sans;
+    @apply bg-snow text-granite font-sans;
   }
 
-  /* Tailwind's reset zeroes the margin the browser uses to center <dialog>,
-     which pins dialogs to the top-left corner. This restores centering. */
+
   dialog {
     margin: auto;
   }
 
-  /* Tailwind v4 uses the default cursor on buttons */
+
   button:not(:disabled) {
     cursor: pointer;
   }
