@@ -1,13 +1,13 @@
 
-const BrowsePages = ({ currentPage, totalPages, onPageChange }) => {
+const BrowsePages = (props) => {
     // Creates Array With The Numbered Pages
     const pageNumbers = [];
-    for (let i = 1; i <= totalPages; i++) {
+    for (let i = 1; i <= props.totalPages; i++) {
         pageNumbers.push(i);
     }
 
     // If Not Enough Products For Multiple Pages
-    if (totalPages <= 1) {
+    if (props.totalPages <= 1) {
         return null;
     }
 
@@ -15,8 +15,8 @@ const BrowsePages = ({ currentPage, totalPages, onPageChange }) => {
     return (
         <nav className="broswsepages" aria-label="broswsepages">
             <button
-                onClick={() => onPageChange(currentPage - 1)}
-                disabled={currentPage === 1}
+                onClick={() => props.onPageChange(props.currentPage - 1)}
+                disabled={props.currentPage === 1}
                 aria-label="Previous page"
             >
                 &larr;
@@ -25,17 +25,17 @@ const BrowsePages = ({ currentPage, totalPages, onPageChange }) => {
             {pageNumbers.map(number => (
                 <button
                     key={number}
-                    onClick={() => onPageChange(number)}
-                    className={number === currentPage ? 'page-btn current' : 'page-btn'}
-                    aria-current={number === currentPage ? 'page' : undefined}
+                    onClick={() => props.onPageChange(number)}
+                    className={number === props.currentPage ? 'page-btn current' : 'page-btn'}
+                    aria-current={number === props.currentPage ? 'page' : undefined}
                 >
                     {number}
                 </button>
             ))}
 
             <button
-                onClick={() => onPageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
+                onClick={() => props.onPageChange(props.currentPage + 1)}
+                disabled={props.currentPage === props.totalPages}
                 aria-label="Next page"
             >
                 &rarr;
